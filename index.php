@@ -46,7 +46,7 @@ if ($role == 'admin') {
         echo "404 Page Not Found";
     }
 } else {
-    $allowed = ['index', 'rekomendasi','hasil-rekomendasi'];
+    $allowed = ['index', 'rekomendasi'];
     if (in_array($page, $allowed)) {
         include "views/user/$page.php";
     } else {

@@ -66,10 +66,6 @@ foreach ($matriks as $hp_id => $nilaiKriteria) {
 }
 
 
-echo "<pre>";
-print_r($gabungan);
-echo "</pre>";
-die;
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +112,7 @@ die;
   </style>
 </head>
 <body>
-  <a href="./rekomendasi.html" class="btn btn-outline-primary btn-home">Home</a>
+  <a href="/index.php?page=rekomendasi" class="btn btn-outline-primary btn-home">Home</a>
   <div class="container">
     <h1>Hasil Rekomendasi Smartphone</h1>
     <div class="table-responsive">
@@ -126,64 +122,22 @@ die;
             <th scope="col">Merk</th>
             <th scope="col">Harga (Rp)</th>
             <th scope="col">RAM (GB)</th>
-            <th scope="col">Internal Memori (GB)</th>
             <th scope="col">Kamera (MP)</th>
             <th scope="col">Baterai (mAh)</th>
-            <th scope="col">Processor</th>
             <th scope="col">Rank</th>
           </tr>
         </thead>
         <tbody>
+          <?php foreach($gabungan as $value):?>
           <tr>
-            <td>Samsung Galaxy S23</td>
-            <td>15,000,000</td>
-            <td>8</td>
-            <td>128</td>
-            <td>50</td>
-            <td>3900</td>
-            <td>Snapdragon 8 Gen 2</td>
-            <td>1</td>
+            <td><?php echo $value['nama_hp']?></td>
+            <td><?php echo $value['harga_juta'] ?> Jt</td>
+            <td><?php echo $value['ram_gb'] ?> GB</td>
+            <td><?php echo $value['kamera_mp'] ?> MP</td>
+            <td><?php echo $value['baterai_mah'] ?> mAh</td>
+            <td><?php echo $value['peringkat'] ?></td>
           </tr>
-          <tr>
-            <td>Realme GT 2 Pro</td>
-            <td>7,500,000</td>
-            <td>12</td>
-            <td>256</td>
-            <td>50</td>
-            <td>5000</td>
-            <td>Snapdragon 8 Gen 1</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>iPhone 14 Pro</td>
-            <td>20,000,000</td>
-            <td>6</td>
-            <td>256</td>
-            <td>48</td>
-            <td>3200</td>
-            <td>Apple A16 Bionic</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>Google Pixel 7</td>
-            <td>11,000,000</td>
-            <td>8</td>
-            <td>128</td>
-            <td>50</td>
-            <td>4355</td>
-            <td>Google Tensor G2</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>Xiaomi Redmi Note 12</td>
-            <td>3,000,000</td>
-            <td>4</td>
-            <td>64</td>
-            <td>48</td>
-            <td>5000</td>
-            <td>Snapdragon 4 Gen 1</td>
-            <td>5</td>
-          </tr>
+          <?php endforeach?>
         </tbody>
       </table>
     </div>
