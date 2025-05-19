@@ -202,11 +202,29 @@ function hitungPreferensi($distancePositive, $distanceNegative)
     $preferenceScores = array();
     foreach ($distanceNegative as $alt_id => $distancePoinNegative) {
         $distancePoinPositive = $distancePositive[$alt_id];
-        $preferenceScores[$alt_id] = $distancePoinNegative / ($distancePoinPositive + $distancePoinNegative);
+        $denominator = $distancePoinPositive + $distancePoinNegative;
+
+        // Cek agar tidak membagi dengan nol
+        if ($denominator == 0) {
+            $preferenceScores[$alt_id] = 0; // atau null, tergantung logikamu
+        } else {
+            $preferenceScores[$alt_id] = $distancePoinNegative / $denominator;
+        }
     }
 
     return $preferenceScores;
 }
+
+// function hitungPreferensi($distancePositive, $distanceNegative)
+// {
+//     $preferenceScores = array();
+//     foreach ($distanceNegative as $alt_id => $distancePoinNegative) {
+//         $distancePoinPositive = $distancePositive[$alt_id];
+//         $preferenceScores[$alt_id] = $distancePoinNegative / ($distancePoinPositive + $distancePoinNegative);
+//     }
+
+//     return $preferenceScores;
+// }
 
 function urutkanRanking($preferenceScores)
 {

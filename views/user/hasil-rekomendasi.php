@@ -7,7 +7,10 @@ $filters = [
   'ram' => $_GET['ram'] ?? null,
   'baterai' => $_GET['baterai'] ?? null,
   'kamera' => $_GET['kamera'] ?? null,
-  'harga' => isset($_GET['harga']) ? round($_GET['harga'] / 1_000_000, 2) : null,
+  'harga' => (isset($_GET['harga']) && is_numeric($_GET['harga']))
+    ? round(floatval($_GET['harga']) / 1_000_000, 2)
+    : null,
+
 ];
 
 $filters = array_filter($filters); // buang null
@@ -112,7 +115,7 @@ foreach ($matriks as $hp_id => $nilaiKriteria) {
   </style>
 </head>
 <body>
-  <a href="/index.php?page=rekomendasi" class="btn btn-outline-primary btn-home">Home</a>
+  <a href="../../index.php?page=rekomendasi" class="btn btn-outline-primary btn-home">Home</a>
   <div class="container">
     <h1>Hasil Rekomendasi Smartphone</h1>
     <div class="table-responsive">
