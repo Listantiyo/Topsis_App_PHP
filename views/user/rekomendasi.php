@@ -75,7 +75,7 @@
     <nav class="nav flex-column">
       <a class="nav-link" href="index.php?page=index"><i class="bi bi-speedometer2"></i>Home</a>
       <a class="nav-link active" href="index.php?page=rekomendasi"><i class="bi bi-bar-chart"></i> Rekomendasi</a>
-      <a class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      <a class="nav-link" href="index.php?page=logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
     </nav>
   </nav>
   <main class="content">
