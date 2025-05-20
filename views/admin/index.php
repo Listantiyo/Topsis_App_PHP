@@ -71,16 +71,15 @@
     </nav>
   </nav>
   <main class="content">
-    <h1>Welcome to your Dashboard</h1>
+    <h1>Selamat Datang</h1>
     <p class="lead">
-      Sistem pengambilan keputusan pemilihan smartphone menggunakan metode TOPSIS.
     </p>
     <hr />
     <div class="row g-4">
       <div class="col-md-12">
         <div class="p-3 bg-white rounded shadow-sm">
-          <h5>Container</h5>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus in repellendus molestiae porro aliquid cupiditate, repudiandae culpa enim, est ipsam, accusamus ipsa. Eveniet nemo animi quas doloremque quos fugit minima!</p>
+          <h5 class="text-center">Sistem pengambilan keputusan pemilihan smartphone menggunakan metode TOPSIS.</h5>
+          <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus in repellendus molestiae porro aliquid cupiditate, repudiandae culpa enim, est ipsam, accusamus ipsa. Eveniet nemo animi quas doloremque quos fugit minima!</p> -->
         </div>
       </div>
     </div>

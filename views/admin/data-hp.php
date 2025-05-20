@@ -77,12 +77,13 @@
     </p>
     <hr />
     <div class="mt-5 row">
-        <form class="col-6" id="uploadForm">
+        <form class="col-6" id="uploadForm" action="proses/simpan-excel.php" method="POST" enctype="multipart/form-data">
             <div class="input-group mb-3">
                 <input
                 type="file"
                 class="form-control"
                 id="excelFile"
+                name="excelFile"
                 accept=".xls,.xlsx"
                 aria-label="Choose Excel File"
                 required
@@ -103,20 +104,25 @@
             <!-- <th scope="col">Internal Memori</th> -->
             <th scope="col">Kamera</th>
             <th scope="col">Baterai</th>
+            <th scope="col">Option</th>
             <!-- <th scope="col">Processor</th> -->
           </tr>
         </thead>
         <tbody>
-          <?php foreach($data as $idx => $value):?>
+          <?php $ix = 1; foreach($data as $idx => $value):?>
           <tr>
-            <th scope="row" class="text-center"><?php echo $idx ?></th>
+            <th scope="row" class="text-center"><?php echo $ix ?></th>
             <td><?php echo $value['nama_hp']?></td>
             <td class="text-end">Rp <?php echo $value['harga'] ?> Jt</td>
             <td class="text-center"><?php echo $value['ram'] ?> GB</td>
             <td class="text-center"><?php echo $value['kamera'] ?> MP</td>
             <td class="text-center"><?php echo $value['baterai'] ?> mAh</td>
+            <form action="proses/hapus-hp.php" method="post">
+              <input type="hidden" name="id" value="<?php echo $idx ?>">
+              <td class="text-center"><button class="btn btn-danger">Hapus</button></td>
+            </form>
           </tr>
-          <?php endforeach;?>
+          <?php $ix++; endforeach; ?>
         </tbody>
       </table>
     </div>

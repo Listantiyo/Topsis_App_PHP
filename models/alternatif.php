@@ -91,11 +91,54 @@ class Alternatif extends Model{
         WHERE $whereSQL 
         GROUP BY hp_id 
         HAVING COUNT(DISTINCT kriteria_id) = $jumlah
-    ";
+        ";
 
         $result = $this->db->query($query);
         return $this->getFetcAssoc($result); // atau fetch_all/fetch_assoc sesuai yang kamu pakai
     }
+
+    public function simpanHp($merk){
+        // Simpan ke tabel hp
+        $stmt =  $this->db->prepare("INSERT INTO hp (nama) VALUES (?)");
+        $stmt->bind_param("s", $merk);
+        $stmt->execute();
+        $hp_id = $stmt->insert_id;
+
+        return $hp_id;
+    }
+
+    public function simpanNilaiHP($hp_id, $kriteria_id, $nilai_input){
+        $stmt2 = $this->db->prepare("INSERT INTO nilai_hp (hp_id, kriteria_id, nilai) VALUES (?, ?, ?)");
+        $stmt2->bind_param("iid", $hp_id, $kriteria_id, $nilai_input);
+        $stmt2->execute();
+    }
+
+    public function hapusHP($id) {
+        $this->db->begin_transaction();
+    
+        try {
+            $stmt1 = $this->db->prepare("DELETE FROM hasil_topsis WHERE hp_id = ?");
+            $stmt1->bind_param("i", $id);
+            $stmt1->execute();
+            $stmt1->close();
+    
+            $stmt2 = $this->db->prepare("DELETE FROM nilai_hp WHERE hp_id = ?");
+            $stmt2->bind_param("i", $id);
+            $stmt2->execute();
+            $stmt2->close();
+    
+            $stmt3 = $this->db->prepare("DELETE FROM hp WHERE id = ?");
+            $stmt3->bind_param("i", $id);
+            $stmt3->execute();
+            $stmt3->close();
+    
+            $this->db->commit();
+        } catch (Exception $e) {
+            $this->db->rollback();
+            throw $e;
+        }
+    }
+    
 
 
 }

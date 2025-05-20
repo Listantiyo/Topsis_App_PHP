@@ -7,11 +7,10 @@ require_once 'models/nilai.php';
 require_once 'models/kriteria.php';
 
 require_once 'functions/mapping.php';
-// require_once 'proses/hitung.php';
 
 session_start();
 if (!isset($_SESSION['login'])) {
-    include 'auth/login.php';
+    header("Location: auth/login.php");
     exit;
 }
 
@@ -30,7 +29,7 @@ if ($role == 'admin') {
         if($page == 'data-hp'){
             $modelAlt = new Alternatif();
             $data = mapDataHpToGroup($modelAlt->getAllAlternatif());
-            // debug($data);
+            // debug();
         }
         if($page == 'kelola-kriteria'){
             $modelKriteria = new Kriteria();
@@ -48,6 +47,11 @@ if ($role == 'admin') {
 } else {
     $allowed = ['index', 'rekomendasi'];
     if (in_array($page, $allowed)) {
+                if($page == 'index'){
+            $modelAlt = new Alternatif();
+            $data = mapDataHpToGroup($modelAlt->getAllAlternatif());
+            // debug($data);
+        }
         include "views/user/$page.php";
     } else {
         echo "404 Page Not Found";

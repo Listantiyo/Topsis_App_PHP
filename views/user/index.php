@@ -85,24 +85,24 @@
         <table class="table table-striped table-bordered align-middle">
           <thead class="table-light">
             <tr>
-              <th>Gambar</th>
+              <!-- <th>Gambar</th> -->
               <th>Nama HP</th>
               <th>Spesifikasi</th>
             </tr>
           </thead>
           <tbody>
+            <?php foreach($data as $value):?>
             <tr>
-              <td><img src="https://cdn1.smartprix.com/rx-i9FWCH4lE-w420-h420/apple-iphone-12-pro.webp" alt="iPhone 12 Pro" class="hp-img" /></td>
-              <td>iPhone 12 Pro Max</td>
+              <td><?php echo $value['nama_hp']?></td>
               <td>
-                Layar: 6.7 inci Super Retina XDR<br>
-                Chipset: A14 Bionic<br>
-                Kamera: 12 MP triple<br>
-                Baterai: 3687 mAh<br>
-                OS: iOS 14
+                RAM: <?php echo $value['ram']?>  GB<br>
+                Kamera: <?php echo $value['kamera']?>  MP<br>
+                Baterai: <?php echo $value['baterai']?> mAh<br>
+                Rp <?php echo number_format($value['harga'] * 1000000, 0, ',', '.'); ?>
               </td>
             </tr>
-            <tr>
+            <?php endforeach?>
+            <!-- <tr>
               <td><img src="https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-ultra-5g-1.jpg" alt="Samsung Galaxy S21 Ultra" class="hp-img" /></td>
               <td>Samsung Galaxy S21 Ultra</td>
               <td>
@@ -145,7 +145,7 @@
                 Baterai: 4614 mAh<br>
                 OS: Android 12
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
