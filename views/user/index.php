@@ -85,7 +85,6 @@
         <table class="table table-striped table-bordered align-middle">
           <thead class="table-light">
             <tr>
-              <!-- <th>Gambar</th> -->
               <th>Nama HP</th>
               <th>Spesifikasi</th>
             </tr>
@@ -102,50 +101,6 @@
               </td>
             </tr>
             <?php endforeach?>
-            <!-- <tr>
-              <td><img src="https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-ultra-5g-1.jpg" alt="Samsung Galaxy S21 Ultra" class="hp-img" /></td>
-              <td>Samsung Galaxy S21 Ultra</td>
-              <td>
-                Layar: 6.8 inci Dynamic AMOLED 2X<br>
-                Chipset: Exynos 2100 / Snapdragon 888<br>
-                Kamera: 108 + 10 + 10 + 12 MP<br>
-                Baterai: 5000 mAh<br>
-                OS: Android 11
-              </td>
-            </tr>
-            <tr>
-              <td><img src="https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-nord-ce-2-5g-1.jpg" alt="OnePlus Nord CE 2" class="hp-img" /></td>
-              <td>OnePlus Nord CE 2</td>
-              <td>
-                Layar: 6.43 inci AMOLED<br>
-                Chipset: MediaTek Dimensity 900<br>
-                Kamera: 64 + 2 + 2 MP<br>
-                Baterai: 4500 mAh<br>
-                OS: Android 11
-              </td>
-            </tr>
-            <tr>
-              <td><img src="https://cdn1.smartprix.com/rx-izthhEdsG-w420-h420/xiaomi-redmi-note-11.webp" alt="Xiaomi Redmi Note 11 Pro" class="hp-img" /></td>
-              <td>Xiaomi Redmi Note 11 Pro</td>
-              <td>
-                Layar: 6.67 inci AMOLED 120Hz<br>
-                Chipset: Qualcomm Snapdragon 695<br>
-                Kamera: 108 + 8 + 2 MP<br>
-                Baterai: 4500 mAh<br>
-                OS: Android 11
-              </td>
-            </tr>
-            <tr>
-              <td><img src="https://cdn1.smartprix.com/rx-iT6xOrv0t-w420-h420/google-pixel-6-pro-1.webp" alt="Google Pixel 6" class="hp-img" /></td>
-              <td>Google Pixel 6</td>
-              <td>
-                Layar: 6.4 inci AMOLED<br>
-                Chipset: Google Tensor<br>
-                Kamera: 50 + 12 MP<br>
-                Baterai: 4614 mAh<br>
-                OS: Android 12
-              </td>
-            </tr> -->
           </tbody>
         </table>
       </div>

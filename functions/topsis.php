@@ -245,3 +245,34 @@ function urutkanRanking($preferenceScores)
 
     return $ranking;
 }
+
+function mergeAltNames($datas, $altNames)
+{
+    $mergedData = [];
+    foreach ($datas as $hp_id => $value) {
+        $mergedData[] = [$altNames[$hp_id], $value];
+    }
+    return $mergedData;
+}
+function mergeKriteriaNames($datas, $listKriteria)
+{
+    $mergedData = [];
+    foreach ($datas as $hp_id => $value) {
+        $mergedData[] = [$listKriteria[$hp_id]['nama'], $value];
+    }
+    return $mergedData;
+}
+function mergeMatrixWithKriteria($matriks, $listKriteria, $listAlternatif)
+{
+    $merged = [];
+    foreach ($matriks as $hp_id => $values) {
+        $data = [];
+        $data['nama_hp'] = $listAlternatif[$hp_id];
+        foreach ($values as $kriteria_id => $value) {
+            $nama_kolom = strtolower(str_replace([' ', '(', ')'], ['_', '', ''], $listKriteria[$kriteria_id]['nama']));
+            $data[$nama_kolom] = $value;
+        }
+        $merged[] = $data;
+    }
+    return $merged;
+}
