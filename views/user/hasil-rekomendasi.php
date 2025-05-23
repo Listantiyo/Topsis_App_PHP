@@ -29,51 +29,51 @@ $ids = array();
 foreach($filtered as $hp){
   $ids[] = $hp['hp_id'];
 }
-
-$rawData = $model->getAllAlternatif($ids);
-
-$decisionMatrix = bentukMatriks($rawData, true);
-$scaledMatrix = mapToSkala($decisionMatrix['matriks'], $skala);
-$normalizedMatrix = normalisasi($scaledMatrix);
-$weightedMatrix = kalikanBobot($normalizedMatrix, $normalizedBobot);
-$idealPositive = hitungIdealPositif($weightedMatrix, $allType);
-$idealNegative = hitungIdealNegatif($weightedMatrix, $allType);
-$distancePositive = hitungJarak($weightedMatrix, $idealPositive);
-$distanceNegative = hitungJarak($weightedMatrix, $idealNegative);
-$preferenceScores = hitungPreferensi($distancePositive, $distanceNegative);
-$rankings = urutkanRanking($preferenceScores);
-
-$matriks = $decisionMatrix['matriks'];
-$listAlternatif = $decisionMatrix['list_alternatif'];
-$listKriteria = $decisionMatrix['list_kriteria'];
-
-/* Prepare Data To be Render */
-// $decisionMatrixRenderData = mergeMatrixWithKriteria($decisionMatrix['matriks'], $listKriteria, $listAlternatif);
-// $scaledMatrixRenderData = mergeMatrixWithKriteria($scaledMatrix, $listKriteria, $listAlternatif);
-// $normalizedMatrixRenderData = mergeMatrixWithKriteria($normalizedMatrix, $listKriteria, $listAlternatif);
-// $weightedMatrixRenderData = mergeMatrixWithKriteria($weightedMatrix, $listKriteria, $listAlternatif);
-// $idealPositiveRenderData = mergeKriteriaNames($idealPositive, $listKriteria);
-// $idealNegativeRenderData = mergeKriteriaNames($idealNegative, $listKriteria);
-// $distancePositiveRenderData = mergeAltNames($distancePositive, $listAlternatif);
-// $distanceNegativeRenderData = mergeAltNames($distanceNegative, $listAlternatif);
-// $preferencesRenderData = mergeAltNames($preferenceScores, $listAlternatif);
 $rangkingsRenderData = [];
+$rawData = $model->getAllAlternatifByIds($ids);
+if(!empty($rawData)){
+  $decisionMatrix = bentukMatriks($rawData, true);
+  $scaledMatrix = mapToSkala($decisionMatrix['matriks'], $skala);
+  $normalizedMatrix = normalisasi($scaledMatrix);
+  $weightedMatrix = kalikanBobot($normalizedMatrix, $normalizedBobot);
+  $idealPositive = hitungIdealPositif($weightedMatrix, $allType);
+  $idealNegative = hitungIdealNegatif($weightedMatrix, $allType);
+  $distancePositive = hitungJarak($weightedMatrix, $idealPositive);
+  $distanceNegative = hitungJarak($weightedMatrix, $idealNegative);
+  $preferenceScores = hitungPreferensi($distancePositive, $distanceNegative);
+  $rankings = urutkanRanking($preferenceScores);
 
-foreach ($rankings as $hp_id => $ranking) {
-  $data = [
-    'hp_id' => $hp_id,
-    'nama_hp' => $listAlternatif[$hp_id],
-    'skor' => floatval(number_format($ranking['score'], 2, '.', '')),
-    'peringkat' => $ranking['rank'],
-  ];
+  $matriks = $decisionMatrix['matriks'];
+  $listAlternatif = $decisionMatrix['list_alternatif'];
+  $listKriteria = $decisionMatrix['list_kriteria'];
 
-  // Tambahkan tiap nilai kriteria sebagai kolom
-  foreach ($matriks[$hp_id] as $kriteria_id => $nilai) {
-    $nama_kolom = strtolower(str_replace([' ', '(', ')'], ['_', '', ''], $listKriteria[$kriteria_id]['nama']));
-    $data[$nama_kolom] = floatval(number_format($nilai, 2, '.', ''));
+  /* Prepare Data To be Render */
+  // $decisionMatrixRenderData = mergeMatrixWithKriteria($decisionMatrix['matriks'], $listKriteria, $listAlternatif);
+  // $scaledMatrixRenderData = mergeMatrixWithKriteria($scaledMatrix, $listKriteria, $listAlternatif);
+  // $normalizedMatrixRenderData = mergeMatrixWithKriteria($normalizedMatrix, $listKriteria, $listAlternatif);
+  // $weightedMatrixRenderData = mergeMatrixWithKriteria($weightedMatrix, $listKriteria, $listAlternatif);
+  // $idealPositiveRenderData = mergeKriteriaNames($idealPositive, $listKriteria);
+  // $idealNegativeRenderData = mergeKriteriaNames($idealNegative, $listKriteria);
+  // $distancePositiveRenderData = mergeAltNames($distancePositive, $listAlternatif);
+  // $distanceNegativeRenderData = mergeAltNames($distanceNegative, $listAlternatif);
+  // $preferencesRenderData = mergeAltNames($preferenceScores, $listAlternatif);
+
+  foreach ($rankings as $hp_id => $ranking) {
+    $data = [
+      'hp_id' => $hp_id,
+      'nama_hp' => $listAlternatif[$hp_id],
+      'skor' => floatval(number_format($ranking['score'], 2, '.', '')),
+      'peringkat' => $ranking['rank'],
+    ];
+
+    // Tambahkan tiap nilai kriteria sebagai kolom
+    foreach ($matriks[$hp_id] as $kriteria_id => $nilai) {
+      $nama_kolom = strtolower(str_replace([' ', '(', ')'], ['_', '', ''], $listKriteria[$kriteria_id]['nama']));
+      $data[$nama_kolom] = floatval(number_format($nilai, 2, '.', ''));
+    }
+
+    $rangkingsRenderData[] = $data;
   }
-
-  $rangkingsRenderData[] = $data;
 }
 ?>
 
