@@ -431,7 +431,7 @@ if(!empty($rawData)){
     function renderTable(elm, datas, columns){
       elm.pagination({
           dataSource: datas,
-          pageSize: 5,
+          pageSize: 100,
           showPrevious: true,
           showNext: true,
           callback: function(data, pagination) {
