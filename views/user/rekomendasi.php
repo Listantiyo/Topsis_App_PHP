@@ -87,41 +87,70 @@
     <h3>Cari Rekomendasi Smartphone</h3>
     <form id="searchForm" action="views/user/hasil-rekomendasi.php" method="GET">
       <div class="table-responsive">
-        <table class="table table-bordered align-middle">
-          <thead class="table-primary">
+    <table class="table table-bordered align-middle">
+        <thead class="table-primary">
             <tr>
-              <th>Kriteria</th>
-              <th>Spesifikasi</th>
+                <th>Kriteria</th>
+                <th>Spesifikasi</th>
             </tr>
-          </thead>
-          <tbody>
+        </thead>
+        <tbody>
             <tr>
-              <td>Harga</td>
-              <td>
-                <input type="number" class="form-control" id="hargaInput" name="harga" placeholder="Masukkan harga maksimal" min="0" />
-              </td>
-            </tr>
-            <tr>
-              <td>RAM (GB)</td>
-              <td>
-                <input type="number" class="form-control" id="ramInput" name="ram" placeholder="Masukkan minimal RAM" min="0" />
-              </td>
-            </tr>
-            <tr>
-              <td>Kamera (MP)</td>
-              <td>
-                <input type="number" class="form-control" id="kameraInput" name="kamera" placeholder="Masukkan minimal megapixel kamera" min="0" />
-              </td>
+                <td>Harga</td>
+                <td>
+                    <select class="form-control" id="hargaSelect" name="harga">
+                        <option value="">Pilih harga maksimal</option>
+                        <option value="1000000">1.000.000</option>
+                        <option value="2000000">2.000.000</option>
+                        <option value="3000000">3.000.000</option>
+                        <option value="4000000">4.000.000</option>
+                        <option value="5000000">5.000.000</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-              <td>Baterai (mAh)</td>
-              <td>
-                <input type="number" class="form-control" id="bateraiInput" name="baterai" placeholder="Masukkan minimal kapasitas baterai" min="0" />
-              </td>
+                <td>RAM (GB)</td>
+                <td>
+                    <select class="form-control" id="ramSelect" name="ram">
+                        <option value="">Pilih minimal RAM</option>
+                        <option value="2">2 GB</option>
+                        <option value="4">4 GB</option>
+                        <option value="6">6 GB</option>
+                        <option value="8">8 GB</option>
+                        <option value="12">12 GB</option>
+                    </select>
+                </td>
             </tr>
-          </tbody>
-        </table>
-      </div>
+            <tr>
+                <td>Kamera (MP)</td>
+                <td>
+                    <select class="form-control" id="kameraSelect" name="kamera">
+                        <option value="">Pilih minimal megapixel kamera</option>
+                        <option value="8">8 MP</option>
+                        <option value="12">12 MP</option>
+                        <option value="16">16 MP</option>
+                        <option value="24">24 MP</option>
+                        <option value="48">48 MP</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Baterai (mAh)</td>
+                <td>
+                    <select class="form-control" id="bateraiSelect" name="baterai">
+                        <option value="">Pilih minimal kapasitas baterai</option>
+                        <option value="2000">2.000 mAh</option>
+                        <option value="3000">3.000 mAh</option>
+                        <option value="4000">4.000 mAh</option>
+                        <option value="5000">5.000 mAh</option>
+                        <option value="6000">6.000 mAh</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary px-5">Cari</button>
         <!-- <a href="./hasil-rekomendasi.html" class="btn btn-primary px-5">Cari</a> -->
