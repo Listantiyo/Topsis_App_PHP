@@ -26,12 +26,12 @@ $model = new Alternatif();
 $filtered = $model->filterHP($filters, $kriteriaMap);
 
 $ids = array();
-foreach($filtered as $hp){
+foreach ($filtered as $hp) {
   $ids[] = $hp['hp_id'];
 }
 $rangkingsRenderData = [];
 $rawData = $model->getAllAlternatifByIds($ids);
-if(!empty($rawData)){
+if (!empty($rawData)) {
   $decisionMatrix = bentukMatriks($rawData, true);
   $scaledMatrix = mapToSkala($decisionMatrix['matriks'], $skala);
   $normalizedMatrix = normalisasi($scaledMatrix);
@@ -79,27 +79,27 @@ if(!empty($rawData)){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hasil Rekomendasi Smartphone</title>
   <!-- Bootstrap CSS CDN -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
       background-color: #fefefe;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 1rem;
     }
+
     .btn-home {
       position: fixed;
       top: 1rem;
       left: 1rem;
       z-index: 1030;
     }
+
     h1 {
       margin-top: 3rem;
       margin-bottom: 2rem;
@@ -107,17 +107,21 @@ if(!empty($rawData)){
       color: #0d6efd;
       font-weight: 700;
     }
+
     .table thead th {
       text-align: center;
       vertical-align: middle;
     }
+
     .table tbody td {
       vertical-align: middle;
       text-align: center;
     }
+
     .table tbody td:first-child {
       text-align: left;
     }
+
     /* Paginate */
     .paginateTable .paginationjs {
       display: flex;
@@ -171,9 +175,9 @@ if(!empty($rawData)){
       border-color: #eee;
       background-color: #fafafa;
     }
-
   </style>
 </head>
+
 <body>
   <a href="../../index.php?page=rekomendasi" class="btn btn-outline-primary btn-home">Home</a>
   <div class="container">
@@ -192,10 +196,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="datadecisionMatrixRenderData" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -213,10 +217,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="datascaledMatrixRenderData" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -234,10 +238,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="datanormalizedMatrixRenderData" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -255,10 +259,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="dataweightedMatrixRenderData" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -273,10 +277,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="dataIdealPositive" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -291,10 +295,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="dataIdealNegative" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -309,10 +313,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="dataDistancePositive" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -327,10 +331,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="dataDistanceNegative" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -345,10 +349,10 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="preferenceScores" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
@@ -368,38 +372,37 @@ if(!empty($rawData)){
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
         <tfoot id="dataPeringkat" class="paginateTable">
-            <!-- List Paginate -->
+          <!-- List Paginate -->
         </tfoot>
       </table>
     </div>
   </div>
   <!-- Bootstrap JS Bundle -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-  ></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="../js/pagination.min.js"></script>
   <script>
     /* Prepare Render final dataPeringkat */
-    let dataPeringkat = <?php echo json_encode($rangkingsRenderData)?>;
-    let columnsDataPeringkat = ['nama_hp','harga_juta','ram_gb','kamera_mp','baterai_mah','skor','peringkat'];
+    let dataPeringkat = <?php echo json_encode($rangkingsRenderData) ?>;
+    let columnsDataPeringkat = ['nama_hp', 'harga_juta', 'ram_gb', 'kamera_mp', 'baterai_mah', 'skor', 'peringkat'];
     /* Prepare Render dataPreference */
-    // let dataPreference = <?php //echo json_encode($preferencesRenderData)?>;
+    // let dataPreference = <?php //echo json_encode($preferencesRenderData) ?>;
     // let columnsdataPreference = false;
     // /* Prepare Render dataDistanceNegative */
-    // let dataDistanceNegative = <?php //echo json_encode($distanceNegativeRenderData)?>;
+    // let dataDistanceNegative = <?php //echo json_encode($distanceNegativeRenderData) ?>;
     // let columnsdataDistanceNegative = false;
     // /* Prepare Render dataDistancePositive */
-    // let dataDistancePositive = <?php //echo json_encode($distancePositiveRenderData)?>;
+    // let dataDistancePositive = <?php //echo json_encode($distancePositiveRenderData) ?>;
     // let columnsdataDistancePositive = false;
     // /* Prepare Render dataidealNegative */
-    // let dataIdealNegative = <?php //echo json_encode($idealNegativeRenderData)?>;
+    // let dataIdealNegative = <?php //echo json_encode($idealNegativeRenderData) ?>;
     // let columnsdataidealNegative = false;
     // /* Prepare Render dataidealPositive */
-    // let dataIdealPositive = <?php //echo json_encode($idealPositiveRenderData)?>;
+    // let dataIdealPositive = <?php //echo json_encode($idealPositiveRenderData) ?>;
     // let columnsdataidealPositive = false;
     // /* Prepare Render dataweightedMatrixRenderData */
     // let dataweightedMatrixRenderData = <?php //echo json_encode($weightedMatrixRenderData) ?>;
@@ -413,9 +416,9 @@ if(!empty($rawData)){
     // /* Prepare Render datadecisionMatrixRenderData */
     // let datadecisionMatrixRenderData = <?php //echo json_encode($decisionMatrixRenderData) ?>;
     // let columnsdatadecisionMatrixRenderData = ['nama_hp','harga_juta','ram_gb','kamera_mp','baterai_mah'];
-    
-    
-    
+
+
+
     /* Renders */
     // renderTable($('#datadecisionMatrixRenderData'), datadecisionMatrixRenderData, columnsdatadecisionMatrixRenderData);
     // renderTable($('#datascaledMatrixRenderData'), datascaledMatrixRenderData, columnsdatascaledMatrixRenderData);
@@ -426,45 +429,50 @@ if(!empty($rawData)){
     // renderTable($('#dataDistancePositive'), dataDistancePositive, columnsdataDistancePositive);
     // renderTable($('#dataDistanceNegative'), dataDistanceNegative, columnsdataDistanceNegative);
     // renderTable($('#preferenceScores'), dataPreference, columnsdataPreference);
-    renderTable($('#dataPeringkat'), dataPeringkat, columnsDataPeringkat);
+    renderTable($('#dataPeringkat'), dataPeringkat, columnsDataPeringkat, false);
 
-    function renderTable(elm, datas, columns){
-      elm.pagination({
+    function renderTable(elm, datas, columns, usePagination = true) {
+      if (usePagination) {
+        elm.pagination({
           dataSource: datas,
           pageSize: 100,
           showPrevious: true,
           showNext: true,
-          callback: function(data, pagination) {
-              // template method of yourself
-              var html = template(data, columns);
-              elm.prev().html(html);
+          callback: function (data, pagination) {
+            var html = template(data, columns);
+            elm.prev().html(html);
           }
-      })
+        });
+      } else {
+        // tampilkan semua data tanpa pagination
+        var html = template(datas, columns);
+        elm.prev().html(html);
+      }
     }
 
-    function template(data,columns){
+    function template(data, columns) {
       return data.map(value => {
-        if(typeof value !== 'object') return false;
-          let tds = '';
-          switch(columns !== false){
-            case true :
-              for(const idx in columns ){
-                tds += `<td>${value[columns[idx]]}</td>`
-              };
+        if (typeof value !== 'object') return false;
+        let tds = '';
+        switch (columns !== false) {
+          case true:
+            for (const idx in columns) {
+              tds += `<td>${value[columns[idx]]}</td>`
+            };
             break;
-            case false:
-              for(const idx in value ){
-                tds += `<td>${value[idx]}</td>`
-              };
+          case false:
+            for (const idx in value) {
+              tds += `<td>${value[idx]}</td>`
+            };
             break;
-          }
+        }
         return `<tr> ${tds} </tr>`;
-      }).reduce((prev,next) => {
+      }).reduce((prev, next) => {
         console.log(next);
         return prev += next;
-      },'');
+      }, '');
     }
   </script>
 </body>
-</html>
 
+</html>

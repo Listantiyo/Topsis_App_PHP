@@ -105,6 +105,11 @@
                         <option value="3000000">3.000.000</option>
                         <option value="4000000">4.000.000</option>
                         <option value="5000000">5.000.000</option>
+                        <option value="10000000">10.000.000</option>
+                        <option value="15000000">15.000.000</option>
+                        <option value="20000000">20.000.000</option>
+                        <option value="25000000">25.000.000</option>
+                        <option value="30000000">30.000.000</option>
                     </select>
                 </td>
             </tr>
@@ -118,6 +123,7 @@
                         <option value="6">6 GB</option>
                         <option value="8">8 GB</option>
                         <option value="12">12 GB</option>
+                        <option value="16">16 GB</option>
                     </select>
                 </td>
             </tr>
@@ -130,7 +136,12 @@
                         <option value="12">12 MP</option>
                         <option value="16">16 MP</option>
                         <option value="24">24 MP</option>
+                        <option value="32">32 MP</option>
                         <option value="48">48 MP</option>
+                        <option value="50">50 MP</option>
+                        <option value="64">64 MP</option>
+                        <option value="108">108 MP</option>
+                        <option value="200">200 MP</option>
                     </select>
                 </td>
             </tr>
@@ -140,10 +151,15 @@
                     <select class="form-control" id="bateraiSelect" name="baterai">
                         <option value="">Pilih minimal kapasitas baterai</option>
                         <option value="2000">2.000 mAh</option>
+                        <option value="2500">2.500 mAh</option>
                         <option value="3000">3.000 mAh</option>
+                        <option value="3500">3.500 mAh</option>
                         <option value="4000">4.000 mAh</option>
+                        <option value="4500">4.500 mAh</option>
                         <option value="5000">5.000 mAh</option>
+                        <option value="5500">5.500 mAh</option>
                         <option value="6000">6.000 mAh</option>
+                        <option value="7000">7.000 mAh</option>
                     </select>
                 </td>
             </tr>
